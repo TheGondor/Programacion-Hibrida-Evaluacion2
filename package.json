@@ -21,28 +21,32 @@
     "@angular/forms": "22.0.1",
     "@angular/platform-browser": "22.0.1",
     "@angular/router": "22.0.1",
-    "@ionic/angular": "^9.0.0",
-    "ionicons": "^8.1.0",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
+    "@capacitor-community/sqlite": "^8.1.1",
     "@capacitor/app": "latest",
     "@capacitor/core": "latest",
-    "@capacitor/keyboard": "latest",
     "@capacitor/haptics": "latest",
-    "@capacitor/status-bar": "latest"
+    "@capacitor/keyboard": "latest",
+    "@capacitor/preferences": "^8.0.1",
+    "@capacitor/status-bar": "latest",
+    "@ionic/angular": "^9.0.0",
+    "ionicons": "^8.1.0",
+    "jeep-sqlite": "^2.8.0",
+    "rxjs": "~7.8.0",
+    "sql.js": "1.11.0",
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular/build": "22.0.1",
     "@angular/cli": "22.0.1",
     "@angular/compiler-cli": "22.0.1",
     "@angular/language-service": "22.0.1",
+    "@capacitor/cli": "latest",
     "@ionic/angular-toolkit": "^13.0.0",
     "angular-eslint": "22.0.0",
     "eslint": "^9.16.0",
     "jsdom": "^26.0.0",
     "typescript": "~6.0.0",
     "typescript-eslint": "^8.61.0",
-    "vitest": "^4.0.8",
-    "@capacitor/cli": "latest"
+    "vitest": "^4.0.8"
   }
 }

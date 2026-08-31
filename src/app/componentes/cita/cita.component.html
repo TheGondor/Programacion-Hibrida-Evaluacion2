@@ -1,7 +1,8 @@
 <article class="cita" [class.cita--tarjeta]="variante === 'tarjeta'" [class.cita--item]="variante === 'item'">
   <ion-button
-    *ngIf="mostrarEliminar"
     class="cita__eliminar"
+    [class.cita__eliminar--oculto]="!mostrarEliminar"
+    [disabled]="!mostrarEliminar"
     fill="clear"
     (click)="onEliminar()"
     aria-label="Eliminar cita"

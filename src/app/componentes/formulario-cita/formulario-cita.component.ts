@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { IonButton, IonInput, IonItem, IonNote } from '@ionic/angular';
 import { Cita } from '../../types/cita';
 
@@ -20,7 +20,7 @@ export class FormularioCitaComponent implements OnInit {
 
   ngOnInit() {}
 
-  onAgregar(): void {
+  onAgregar(formCita: NgForm): void {
     if (this.frase.trim().length < 5 || this.autor.trim().length < 2) {
       return;
     }
@@ -31,7 +31,6 @@ export class FormularioCitaComponent implements OnInit {
       autor: this.autor.trim(),
     });
 
-    this.frase = '';
-    this.autor = '';
+    formCita.resetForm();
   }
 }

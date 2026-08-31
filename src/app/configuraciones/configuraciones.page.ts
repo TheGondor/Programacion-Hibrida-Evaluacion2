@@ -35,15 +35,21 @@ export class ConfiguracionesPage implements OnInit, ViewWillEnter {
   constructor(private configuracion: Configuracion) { }
 
   ngOnInit() {
-    this.permitirBorrarInicio = this.configuracion.obtenerPermitirBorrarInicio();
+    void this.cargarConfiguracion();
   }
 
   ionViewWillEnter() {
     this.permitirBorrarInicio = this.configuracion.obtenerPermitirBorrarInicio();
+    void this.cargarConfiguracion();
   }
 
-  onCambioOpcion(activo: boolean): void {
+  async onCambioOpcion(activo: boolean): Promise<void> {
     this.permitirBorrarInicio = activo;
-    this.configuracion.establecerPermitirBorrarInicio(activo);
+    await this.configuracion.establecerPermitirBorrarInicio(activo);
+  }
+
+  private async cargarConfiguracion(): Promise<void> {
+    await this.configuracion.inicializar();
+    this.permitirBorrarInicio = this.configuracion.obtenerPermitirBorrarInicio();
   }
 }

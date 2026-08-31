@@ -39,23 +39,30 @@ export class GestionPage implements OnInit, ViewWillEnter {
 
   ngOnInit() {
     this.cargarCitas();
+    void this.iniciar();
   }
 
   ionViewWillEnter() {
     this.cargarCitas();
+    void this.iniciar();
+  }
+
+  private async iniciar(): Promise<void> {
+    await this.citasServicio.iniciarPlugin();
+    this.cargarCitas();
   }
 
   onAgregar(cita: Cita): void {
-    this.citasServicio.agregar(cita.frase, cita.autor);
+    void this.citasServicio.agregar(cita.frase, cita.autor);
     this.cargarCitas();
   }
 
   onEliminar(cita: Cita): void {
-    this.citasServicio.eliminar(cita.id);
+    void this.citasServicio.eliminar(cita.id);
     this.cargarCitas();
   }
 
   private cargarCitas(): void {
-    this.citas = this.citasServicio.obtenerTodas();
+    this.citas = this.citasServicio.obtenerCitas().slice();
   }
 }

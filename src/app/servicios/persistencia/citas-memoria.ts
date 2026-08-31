@@ -1,6 +1,7 @@
 import { Cita } from '../../types/cita';
+import { PersistenciaCitas } from '../../types/persistencia';
 
-export class CitasMemoria {
+export class CitasMemoria implements PersistenciaCitas {
   private siguienteId = 4;
   private citas: Cita[] = [
     {
@@ -20,11 +21,19 @@ export class CitasMemoria {
     },
   ];
 
-  obtenerTodas(): Cita[] {
+  async iniciarPlugin(): Promise<void> {
+    return;
+  }
+
+  async cerrarConexion(): Promise<void> {
+    return;
+  }
+
+  async obtenerTodas(): Promise<Cita[]> {
     return this.citas;
   }
 
-  agregar(frase: string, autor: string): void {
+  async agregar(frase: string, autor: string): Promise<void> {
     this.citas.push({
       id: this.siguienteId,
       frase,
@@ -33,7 +42,7 @@ export class CitasMemoria {
     this.siguienteId++;
   }
 
-  eliminar(id: number): void {
+  async eliminar(id: number): Promise<void> {
     this.citas = this.citas.filter((cita) => cita.id !== id);
   }
 }

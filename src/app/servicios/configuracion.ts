@@ -1,16 +1,37 @@
 import { Service } from '@angular/core';
-import { ConfiguracionMemoria } from './persistencia/configuracion-memoria';
+import { PersistenciaConfiguracion } from '../types/persistencia';
+import { ConfiguracionPreferences } from './persistencia/configuracion-preferences';
 
 @Service()
 export class Configuracion {
-  private persistencia = new ConfiguracionMemoria();
+  private persistencia: PersistenciaConfiguracion = new ConfiguracionPreferences();
+  private permitirBorrarInicio = true;
+  private iniciado = false;
 
-  obtenerPermitirBorrarInicio(): boolean {
-    return this.persistencia.obtener().permitirBorrarInicio;
+  async inicializar(): Promise<void> {
+    if (this.iniciado) {
+      return;
+    }
+    await this.persistencia.inicializar();
+    if (this.iniciado) {
+      return;
+    }
+    const datos = await this.persistencia.obtener();
+    if (this.iniciado) {
+      return;
+    }
+    this.permitirBorrarInicio = datos.permitirBorrarInicio;
+    this.iniciado = true;
   }
 
-  establecerPermitirBorrarInicio(valor: boolean): void {
-    this.persistencia.guardar({
+  obtenerPermitirBorrarInicio(): boolean {
+    return this.permitirBorrarInicio;
+  }
+
+  async establecerPermitirBorrarInicio(valor: boolean): Promise<void> {
+    this.permitirBorrarInicio = valor;
+    this.iniciado = true;
+    await this.persistencia.guardar({
       permitirBorrarInicio: valor,
     });
   }

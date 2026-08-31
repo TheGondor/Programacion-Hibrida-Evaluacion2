@@ -55,3 +55,8 @@
   top: 8px;
   right: 8px;
 }
+
+.cita__eliminar--oculto {
+  visibility: hidden;
+  pointer-events: none;
+}
