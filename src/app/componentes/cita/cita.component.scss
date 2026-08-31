@@ -1,0 +1,57 @@
+.cita {
+  position: relative;
+}
+
+.cita--tarjeta {
+  background: #ececec;
+  border-radius: 4px;
+  min-height: 220px;
+  padding: 28px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cita--item {
+  padding: 16px 8px 16px 0;
+  border-bottom: 1px solid var(--ion-color-light-shade);
+}
+
+.cita__frase {
+  margin: 0;
+  color: var(--ion-color-primary);
+  font-size: 1.15rem;
+  line-height: 1.45;
+}
+
+.cita--item .cita__frase {
+  font-size: 1rem;
+  padding-right: 40px;
+}
+
+.cita__autor {
+  margin: 16px 0 0;
+  text-align: right;
+  color: #222;
+  font-size: 0.95rem;
+}
+
+.cita--item .cita__autor {
+  color: var(--ion-text-color, #222);
+  padding-right: 40px;
+}
+
+.cita__eliminar {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  margin: 0;
+  --color: var(--ion-color-primary);
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+
+.cita--tarjeta .cita__eliminar {
+  top: 8px;
+  right: 8px;
+}

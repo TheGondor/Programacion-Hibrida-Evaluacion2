@@ -1,0 +1,31 @@
+<section class="formulario">
+  <h2 class="formulario__titulo">Crea una nueva cita.</h2>
+
+  <ion-item lines="full">
+    <ion-input
+      label="Cita"
+      labelPlacement="floating"
+      [(ngModel)]="frase"
+      name="frase"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-input
+      label="Autor"
+      labelPlacement="floating"
+      [(ngModel)]="autor"
+      name="autor"
+      placeholder="Mahatma Gandhi"
+    ></ion-input>
+  </ion-item>
+
+  <ion-button
+    class="formulario__agregar"
+    fill="clear"
+    (click)="onAgregar()"
+    [disabled]="!formularioValido"
+  >
+    AGREGAR +
+  </ion-button>
+</section>

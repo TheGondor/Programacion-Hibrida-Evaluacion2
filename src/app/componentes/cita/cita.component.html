@@ -1,0 +1,14 @@
+<article class="cita" [class.cita--tarjeta]="variante === 'tarjeta'" [class.cita--item]="variante === 'item'">
+  <ion-button
+    *ngIf="mostrarEliminar"
+    class="cita__eliminar"
+    fill="clear"
+    (click)="onEliminar()"
+    aria-label="Eliminar cita"
+  >
+    <ion-icon slot="icon-only" name="trash"></ion-icon>
+  </ion-button>
+
+  <p class="cita__frase">{{ cita.frase }}</p>
+  <p class="cita__autor">{{ cita.autor }}</p>
+</article>

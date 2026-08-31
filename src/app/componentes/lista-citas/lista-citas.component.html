@@ -1,0 +1,10 @@
+<section class="lista">
+  <app-cita
+    *ngFor="let cita of citas"
+    [cita]="cita"
+    [mostrarEliminar]="true"
+    variante="item"
+    (eliminar)="onEliminar($event)"
+  ></app-cita>
+  <p class="lista__vacia" *ngIf="citas.length === 0">No hay citas registradas.</p>
+</section>
