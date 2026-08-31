@@ -1,31 +1,56 @@
 <section class="formulario">
   <h2 class="formulario__titulo">Crea una nueva cita.</h2>
 
-  <ion-item lines="full">
-    <ion-input
-      label="Cita"
-      labelPlacement="floating"
-      [(ngModel)]="frase"
-      name="frase"
-    ></ion-input>
-  </ion-item>
+  <form #formCita="ngForm">
+    <ion-item lines="full">
+      <ion-input
+        label="Cita"
+        labelPlacement="floating"
+        [(ngModel)]="frase"
+        name="frase"
+        required
+        minlength="5"
+        #fraseCtrl="ngModel"
+      ></ion-input>
+    </ion-item>
+    <ion-note
+      class="formulario__error"
+      color="danger"
+      *ngIf="fraseCtrl.invalid && (fraseCtrl.dirty || fraseCtrl.touched)"
+    >
+      <span *ngIf="fraseCtrl.errors?.['required']">Debe ingresar una cita.</span>
+      <span *ngIf="fraseCtrl.errors?.['minlength']">La cita debe tener al menos 5 caracteres.</span>
+    </ion-note>
 
-  <ion-item lines="full">
-    <ion-input
-      label="Autor"
-      labelPlacement="floating"
-      [(ngModel)]="autor"
-      name="autor"
-      placeholder="Mahatma Gandhi"
-    ></ion-input>
-  </ion-item>
+    <ion-item lines="full">
+      <ion-input
+        label="Autor"
+        labelPlacement="floating"
+        [(ngModel)]="autor"
+        name="autor"
+        required
+        minlength="2"
+        placeholder="Mahatma Gandhi"
+        #autorCtrl="ngModel"
+      ></ion-input>
+    </ion-item>
+    <ion-note
+      class="formulario__error"
+      color="danger"
+      *ngIf="autorCtrl.invalid && (autorCtrl.dirty || autorCtrl.touched)"
+    >
+      <span *ngIf="autorCtrl.errors?.['required']">Debe ingresar un autor.</span>
+      <span *ngIf="autorCtrl.errors?.['minlength']">El autor debe tener al menos 2 caracteres.</span>
+    </ion-note>
 
-  <ion-button
-    class="formulario__agregar"
-    fill="clear"
-    (click)="onAgregar()"
-    [disabled]="!formularioValido"
-  >
-    AGREGAR +
-  </ion-button>
+    <ion-button
+      class="formulario__agregar"
+      fill="clear"
+      type="button"
+      (click)="onAgregar()"
+      [disabled]="formCita.invalid"
+    >
+      AGREGAR +
+    </ion-button>
+  </form>
 </section>

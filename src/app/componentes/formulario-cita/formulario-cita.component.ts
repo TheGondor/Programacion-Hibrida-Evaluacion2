@@ -1,13 +1,14 @@
+import { NgIf } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonButton, IonInput, IonItem } from '@ionic/angular';
+import { IonButton, IonInput, IonItem, IonNote } from '@ionic/angular';
 import { Cita } from '../../types/cita';
 
 @Component({
   selector: 'app-formulario-cita',
   templateUrl: './formulario-cita.component.html',
   styleUrls: ['./formulario-cita.component.scss'],
-  imports: [FormsModule, IonItem, IonInput, IonButton],
+  imports: [NgIf, FormsModule, IonItem, IonInput, IonButton, IonNote],
 })
 export class FormularioCitaComponent implements OnInit {
   @Output() agregar = new EventEmitter<Cita>();
@@ -19,12 +20,8 @@ export class FormularioCitaComponent implements OnInit {
 
   ngOnInit() {}
 
-  get formularioValido(): boolean {
-    return this.frase.trim().length > 0 && this.autor.trim().length > 0;
-  }
-
   onAgregar(): void {
-    if (!this.formularioValido) {
+    if (this.frase.trim().length < 5 || this.autor.trim().length < 2) {
       return;
     }
 
